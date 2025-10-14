@@ -21,14 +21,12 @@ public class Valuta {
    private float forholdUnderNok;
    */
 
-   private String navn = "fill";
+   private String navn;
    
     public Valuta(String navn){
         this.navn = navn;
-
     }
     
-
     public float valutaTilNok(float mengde, float forholdUnderNok){
         return forholdUnderNok*mengde;
     }

@@ -28,8 +28,11 @@ public class PrimtallTest {
                 System.out.println("Ugyldig input. Vennligst skriv et heltall.");
                 scanner.next();
             }
+            scanner.close();
         }
+        
     }
+    
     
     public static boolean erPrimtall(int tall) {
  
@@ -39,5 +42,7 @@ public class PrimtallTest {
             }
         }
         return true; 
+        
     }
+    
 }
