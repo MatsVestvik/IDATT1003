@@ -1,39 +1,37 @@
-package Oppg1;
-public class Arrangement implements Comparable<Arrangement>{
+// Arrangement-klassen
+class Arrangement {
+    private int id;
+    private String navn;
+    private String sted;
+    private String arrangor;
+    private String type;
+    private long tidspunkt;
     
-    private final String name;
-    private final String location;
-    private final String host;
-    private final String type;
-    private final int num;
-    private final long time;
-
-    //konstruktør
-    Arrangement(String name, String location,
-     String host, String type, int num, long time){
-        this.name = name;
-        this.location = location;
-        this.host = host;
+    public Arrangement(int id, String navn, String sted, String arrangor, String type, long tidspunkt) {
+        this.id = id;
+        this.navn = navn;
+        this.sted = sted;
+        this.arrangor = arrangor;
         this.type = type;
-        this.num = num;
-        this.time = time;
-    } 
-
-    //gettere
-    public String getName(){return this.name;}
-    public String getLocation(){return this.location;}
-    public String getHost(){return this.host;}
-    public String getType(){return this.type;}
-    public int getNum(){return this.num;}
-    public long getTime(){return this.time;}
-
-    @Override
-    public String toString(){
-        return (String) "name: " + name + " | location: " + location + " | host: " + host + " | type: " + type + " | num: " + num + " | time: " + time; 
+        this.tidspunkt = tidspunkt;
     }
-
+    
+    // Get-metoder
+    public int getId() { return id; }
+    public String getNavn() { return navn; }
+    public String getSted() { return sted; }
+    public String getArrangor() { return arrangor; }
+    public String getType() { return type; }
+    public long getTidspunkt() { return tidspunkt; }
+    
+    // Hjelpemetode for å få dato-delen fra tidspunkt (YYYYMMDD)
+    public int getDato() {
+        return (int)(tidspunkt / 10000);
+    }
+    
     @Override
-    public int compareTo(Arrangement other) {
-        return Long.compare(this.time, other.time);
+    public String toString() {
+        return String.format("ID: %d | %s | Sted: %s | Type: %s | Tid: %d | Arrangør: %s", 
+                           id, navn, sted, type, tidspunkt, arrangor);
     }
 }

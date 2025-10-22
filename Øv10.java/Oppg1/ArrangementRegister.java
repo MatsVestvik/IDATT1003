@@ -1,90 +1,80 @@
-package Oppg1;
+// ArrangementRegister-klassen
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class ArrangementRegister {
+class ArrangementRegister {
     private List<Arrangement> arrangementer;
-
-    //konstruktør
-    ArrangementRegister(){
-        arrangementer = new ArrayList<>(); 
+    
+    public ArrangementRegister() {
+        arrangementer = new ArrayList<>();
     }
-
-    //registrer nytt arrangement
-    public void regNewArrangement(String name, String location, String host, String type, int num, long time){
-        Arrangement nytt = new Arrangement(name, location, host, type, num, time);
-        arrangementer.add(nytt);
-    }
-
-    //get all in specific location
-    public List<Arrangement> getAllPlace(String location){
-        List<Arrangement> resultat = new ArrayList<>();
-        for (Arrangement arr : arrangementer){
-            if (arr.getLocation().equalsIgnoreCase(location)){
-                resultat.add(arr);
+    
+    // Registrer nytt arrangement
+    public boolean registrerArrangement(int id, String navn, String sted, String arrangor, String type, long tidspunkt) {
+        // Sjekk om ID allerede finnes
+        for (Arrangement arr : arrangementer) {
+            if (arr.getId() == id) {
+                return false; // ID finnes allerede
             }
         }
-        return resultat;
+        
+        Arrangement nyttArrangement = new Arrangement(id, navn, sted, arrangor, type, tidspunkt);
+        arrangementer.add(nyttArrangement);
+        return true;
     }
-
-    //get all in specific time (dato - første 8 sifre)
-    public List<Arrangement> getAllTime(long date){
-        List<Arrangement> resultat = new ArrayList<>();
-        for (Arrangement arr : arrangementer){
-            long arrDato = arr.getTime() / 10000; // Fjern klokkeslett (siste 4 sifre)
-            if(arrDato == date){
-                resultat.add(arr);
-            }
-        } 
-        return resultat;
+    
+    // Finn alle arrangementer på et gitt sted
+    public List<Arrangement> finnArrangementerPaaSted(String sted) {
+        return arrangementer.stream()
+                .filter(arr -> arr.getSted().equalsIgnoreCase(sted))
+                .sorted(Comparator.comparing(Arrangement::getTidspunkt))
+                .collect(Collectors.toList());
     }
-
-    //get all inbetween specific time 
-    public List<Arrangement> getTheseTime(long dateStart, long dateStop){
-        List<Arrangement> resultat = new ArrayList<>();
-        for (Arrangement arr : arrangementer){
-            if (arr.getTime() >= dateStart && arr.getTime() <= dateStop){
-                resultat.add(arr);
-            }
-        }
-        Collections.sort(resultat);
-        return resultat;
+    
+    // Finn alle arrangementer på en gitt dato (YYYYMMDD)
+    public List<Arrangement> finnArrangementerPaaDato(int dato) {
+        return arrangementer.stream()
+                .filter(arr -> arr.getDato() == dato)
+                .sorted(Comparator.comparing(Arrangement::getTidspunkt))
+                .collect(Collectors.toList());
     }
-
+    
+    // Finn alle arrangementer innenfor et tidsintervall
+    public List<Arrangement> finnArrangementerIIntervall(int startDato, int sluttDato) {
+        return arrangementer.stream()
+                .filter(arr -> {
+                    int arrDato = arr.getDato();
+                    return arrDato >= startDato && arrDato <= sluttDato;
+                })
+                .sorted(Comparator.comparing(Arrangement::getTidspunkt))
+                .collect(Collectors.toList());
+    }
+    
     // Lister sortert etter sted
     public List<Arrangement> sortertEtterSted() {
-        List<Arrangement> kopi = new ArrayList<>(arrangementer);
-        Collections.sort(kopi, new Comparator<Arrangement>() {
-            @Override
-            public int compare(Arrangement a1, Arrangement a2) {
-                return a1.getLocation().compareToIgnoreCase(a2.getLocation());
-            }
-        });
-        return kopi;
+        return arrangementer.stream()
+                .sorted(Comparator.comparing(Arrangement::getSted))
+                .collect(Collectors.toList());
     }
     
     // Lister sortert etter type
     public List<Arrangement> sortertEtterType() {
-        List<Arrangement> kopi = new ArrayList<>(arrangementer);
-        Collections.sort(kopi, new Comparator<Arrangement>() {
-            @Override
-            public int compare(Arrangement a1, Arrangement a2) {
-                return a1.getType().compareToIgnoreCase(a2.getType());
-            }
-        });
-        return kopi;
+        return arrangementer.stream()
+                .sorted(Comparator.comparing(Arrangement::getType))
+                .collect(Collectors.toList());
     }
     
     // Lister sortert etter tidspunkt
     public List<Arrangement> sortertEtterTid() {
-        List<Arrangement> kopi = new ArrayList<>(arrangementer);
-        Collections.sort(kopi);
-        return kopi;
+        return arrangementer.stream()
+                .sorted(Comparator.comparing(Arrangement::getTidspunkt))
+                .collect(Collectors.toList());
     }
-
-    //get all arrangements
+    
+    // Hent alle arrangementer
     public List<Arrangement> getAlleArrangementer() {
         return new ArrayList<>(arrangementer);
     }
