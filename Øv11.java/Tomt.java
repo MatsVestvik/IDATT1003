@@ -28,7 +28,7 @@ public class Tomt {
 
     @Override
     public String toString(){
-        return String.format("kommuneNavn: %s | kommuneNr: %d | gaardsNr: %d | bruksNr: %d | bruksNavn: %s | areal: %s | eier: %s"
+        return String.format("kommuneNavn: %-8s | kommunenr-gnr/bm: %d-%d/%-5d | bruksNavn: %-8s | areal: %-6s | eier: %-7s"
         , kommuneNavn, kommuneNr, gaardsNr, bruksNr, bruksNavn, areal, eier);
     }
 }

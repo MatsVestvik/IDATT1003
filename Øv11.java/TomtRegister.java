@@ -14,7 +14,11 @@ public class TomtRegister {
         tomter.add(newTomt);
     }
 
-    public List<Tomt> getAll(){
-        return new ArrayList<>(tomter);
+    public void getAll(){
+        for(int i = 0; i < tomter.size(); i++){
+            System.out.println(tomter.get(i));
+        };
     }
+
+    
 }

@@ -21,6 +21,7 @@ public class Student{
         this.antOppg += amount;
     }
 
+    @Override
     public String toString(){
         return (String) this.navn + ", " + this.antOppg;
     }
