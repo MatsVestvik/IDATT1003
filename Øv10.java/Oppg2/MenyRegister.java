@@ -12,9 +12,9 @@ class MenyRegister {
         this.menyer = new ArrayList<>();
     }
     
-    /**
-     * Registrer en ny rett
-     */
+    
+    //Registrer en ny rett
+    
     public boolean registrerRett(String navn, String type, double pris, String oppskrift) {
         if (retter.containsKey(navn)) {
             return false; // Retten finnes allerede
@@ -23,25 +23,25 @@ class MenyRegister {
         return true;
     }
     
-    /**
-     * Finn en rett gitt navnet
-     */
+    
+    //Finn en rett gitt navnet
+    
     public Rett finnRett(String navn) {
         return retter.get(navn);
     }
     
-    /**
-     * Finn alle retter av en gitt type
-     */
+    
+    //Finn alle retter av en gitt type
+    
     public List<Rett> finnRetterAvType(String type) {
         return retter.values().stream()
                 .filter(rett -> rett.getType().equalsIgnoreCase(type))
                 .toList();
     }
     
-    /**
-     * Registrer en ny meny som består av et sett med retter
-     */
+    
+    //Registrer en ny meny som består av et sett med retter
+    
     public boolean registrerMeny(String menyNavn, List<String> rettNavn) {
         List<Rett> menyRetter = new ArrayList<>();
         
@@ -57,9 +57,9 @@ class MenyRegister {
         return true;
     }
     
-    /**
-     * Finn alle menyer med totalpris innenfor et gitt intervall
-     */
+    
+    //Finn alle menyer med totalpris innenfor et gitt intervall
+    
     public List<Meny> finnMenyerIPrisintervall(double minPris, double maxPris) {
         return menyer.stream()
                 .filter(meny -> {
