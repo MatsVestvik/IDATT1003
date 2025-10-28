@@ -36,6 +36,13 @@ public class TomtRegister {
         }
         return null;
     }
+    public double getAvrgArea(){
+        double totalArea = 0;
+        for(int i = 0; i<tomter.size(); i++){
+            totalArea += tomter.get(i).getAreal();
+        }
+        return totalArea/tomter.size();
+    }    
 
     public void getAll(){
         for(int i = 0; i < tomter.size(); i++){
