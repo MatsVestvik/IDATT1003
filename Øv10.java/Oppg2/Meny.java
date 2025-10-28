@@ -10,14 +10,12 @@ public class Meny{
 
     public int addDish(String name, String type, String oppskrift, double price){
         for(int i = 0; i<retter.size(); i++){
-            if(name.equalsIgnoreCase().getName()){
+            if(name.equalsIgnoreCase(retter.get(i).getName())) {
                 return -1;
             }
-            else{
-                Rett nyRett = new Rett(name, type, oppskrift, price);
-                retter.add(nyRett);
-                return 1;
-            }
         }
+        Rett nyRett = new Rett(name, type, oppskrift, price);
+        retter.add(nyRett);
+        return 1;
     }
 }
