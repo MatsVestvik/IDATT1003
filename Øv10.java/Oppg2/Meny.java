@@ -1,28 +1,23 @@
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Meny {
-    private String navn;
+public class Meny{
     private List<Rett> retter;
-    
-    public Meny(String navn, List<Rett> retter) {
-        this.navn = navn;
-        this.retter = new ArrayList<>(retter);
+
+    Meny(){
+        retter = new ArrayList<>();
     }
-    
-    // Beregn totalpris for menyen
-    public double getTotalPris() {
-        return retter.stream()
-                .mapToDouble(Rett::getPris)
-                .sum();
-    }
-    
-    // Get-metoder
-    public String getNavn() { return navn; }
-    public List<Rett> getRetter() { return new ArrayList<>(retter); }
-    
-    @Override
-    public String toString() {
-        return navn + " - Totalpris: " + getTotalPris() + " kr";
+
+    public int addDish(String name, String type, String oppskrift, double price){
+        for(int i = 0; i<retter.size(); i++){
+            if(name.equalsIgnoreCase().getName()){
+                return -1;
+            }
+            else{
+                Rett nyRett = new Rett(name, type, oppskrift, price);
+                retter.add(nyRett);
+                return 1;
+            }
+        }
     }
 }
