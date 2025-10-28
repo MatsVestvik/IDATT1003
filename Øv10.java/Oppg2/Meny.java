@@ -4,7 +4,6 @@ import java.util.List;
 public class Meny{
     private List<Rett> retter;
     private String name;
-    private int size = 0;
 
     Meny(String name){
         retter = new ArrayList<>();
@@ -17,7 +16,9 @@ public class Meny{
         retter.add(rett);
     }
 
-    public int getSize(){return this.size;}
+    public int getSize(){
+        return retter.size();
+    }
 
     public double getPrice(){
         double tot = 0;
