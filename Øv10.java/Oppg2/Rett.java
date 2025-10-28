@@ -18,7 +18,7 @@ public class Rett{
 
     @Override
     public String toString(){
-        return String.format("| type: %-5s |  name: %-5s  | price: %-5s kr |",
+        return String.format("| type: %-10s |  name: %-18s  | price: %-10s kr |",
          this.type, this.name, this.price);
     }
 }

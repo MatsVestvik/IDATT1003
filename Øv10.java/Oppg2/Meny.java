@@ -3,19 +3,36 @@ import java.util.List;
 
 public class Meny{
     private List<Rett> retter;
+    private String name;
+    private int size = 0;
 
-    Meny(){
+    Meny(String name){
         retter = new ArrayList<>();
+        this.name = name;
     }
 
-    public int addDish(String name, String type, String oppskrift, double price){
-        for(int i = 0; i<retter.size(); i++){
-            if(name.equalsIgnoreCase(retter.get(i).getName())) {
-                return -1;
-            }
-        }
-        Rett nyRett = new Rett(name, type, oppskrift, price);
-        retter.add(nyRett);
-        return 1;
+    public String getName() {return name;}
+
+    public void addDish(Rett rett){
+        retter.add(rett);
     }
+
+    public int getSize(){return this.size;}
+
+    public double getPrice(){
+        double tot = 0;
+        for(int i = 0; i < retter.size(); i++){
+            tot += retter.get(i).getPrice();
+        }
+        return tot;
+    }
+
+    public void printMeny(){
+        System.out.println("[Meny: " + name + "]          [Total price: " + getPrice() + "kr]");
+        for(int i = 0; i < retter.size(); i++){
+            System.out.println(retter.get(i).toString());
+        }
+        System.out.println();
+    }
+
 }
