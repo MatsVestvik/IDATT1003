@@ -9,7 +9,8 @@ public class test {
         reg.addTomt("Gloppen", 1445, 74, 188, "null", 1457.2, "Karl Ove Bråten");
         reg.addTomt("Gloppen", 1445, 69, 47, "Høiberg", 1339.4, "Elsa Indregård");
 
-        
-        reg.getAll();
+        System.out.println(reg.getTomt("1445-77/631"));
+
+        //reg.getAll();
     }
 }

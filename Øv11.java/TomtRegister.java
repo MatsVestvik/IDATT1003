@@ -14,6 +14,29 @@ public class TomtRegister {
         tomter.add(newTomt);
     }
 
+    public void removeTomt(String unikID){
+        for(int i = 0; i< tomter.size(); i++){
+            if (unikID.equals(getUnikID(i))) {
+                tomter.remove(i);
+            }
+        }
+    }
+
+    public String getUnikID(int index){
+        return tomter.get(index).getUnikID();
+    }
+
+    public int getNumOfProp(){return tomter.size();}
+
+    public Tomt getTomt(String unikID){
+        for(int i = 0; i<tomter.size(); i++){
+            if (unikID.equals(tomter.get(i).getUnikID())){
+                return tomter.get(i);
+            }
+        }
+        return null;
+    }
+
     public void getAll(){
         for(int i = 0; i < tomter.size(); i++){
             System.out.println(tomter.get(i));

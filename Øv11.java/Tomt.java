@@ -26,9 +26,13 @@ public class Tomt {
     public double getAreal() {return areal;}
     public String getEier() {return eier;}
 
+    public String getUnikID(){
+        return kommuneNr+"-"+gaardsNr+"/"+bruksNr;
+    }
+
     @Override
     public String toString(){
-        return String.format("kommuneNavn: %-8s | kommunenr-gnr/bm: %d-%d/%-5d | bruksNavn: %-8s | areal: %-6s | eier: %-7s"
+        return String.format("| kommuneNavn: %-8s | kommunenr-gnr/bm: %d-%d/%-5d | bruksNavn: %-8s | areal: %-6s | eier: %-15s |"
         , kommuneNavn, kommuneNr, gaardsNr, bruksNr, bruksNavn, areal, eier);
     }
 }
