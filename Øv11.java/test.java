@@ -13,6 +13,8 @@ public class test {
 
         //reg.getAll();
 
-        System.out.println(reg.getAvrgArea());
+        //System.out.println(reg.getAvrgArea());
+
+        reg.getAllGnr(77);
     }
 }
