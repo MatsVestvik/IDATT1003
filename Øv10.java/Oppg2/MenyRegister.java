@@ -11,6 +11,14 @@ public class MenyRegister{
         menyer = new ArrayList<>();
     }
 
+    public int getmenySize(){
+        return menyer.size();
+    }
+
+    public String getMenyName(int index){
+        return menyer.get(index).getName();
+    }
+
     public void addDish(String name, String type, String oppskrift, double price) {
         Rett nyRett = new Rett(name, type, oppskrift, price);
         retter.put(name, nyRett);

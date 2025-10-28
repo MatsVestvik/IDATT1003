@@ -91,7 +91,11 @@ public class Test{
 
     public static void case6(){
         scanner = new Scanner(System.in);
-        System.out.print("Enter menu: ");
+        System.out.println("Choose menu: ");
+        for(int i = 0; i<register.getmenySize(); i++){
+            int num = i+1;
+            System.out.println(num + ". " + register.getMenyName(i));
+        }
         String menu = scanner.nextLine();
         System.out.print("Enter Dish: ");
         String dish = scanner.nextLine();
