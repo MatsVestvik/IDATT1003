@@ -96,7 +96,11 @@ public class Test{
             int num = i+1;
             System.out.println(num + ". " + register.getMenyName(i));
         }
-        String menu = register.getMenyName(scanner.nextInt());
+        int menuChoice = scanner.nextInt();
+        scanner.nextLine();  
+        
+        String menu = register.getMenyName(menuChoice - 1);
+
         System.out.print("Enter Dish: ");
         String dish = scanner.nextLine();
         register.addDTM(menu, dish);
