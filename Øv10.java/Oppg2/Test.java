@@ -27,7 +27,7 @@ public class Test{
                     1. Print Register
                     2. Find all type
                     3. Find all in price
-                    4. Add Dish
+                    4. Create new Dish
                     5. Add new Menu
                     6. Add dish to menu
                     7. exit
@@ -96,7 +96,7 @@ public class Test{
             int num = i+1;
             System.out.println(num + ". " + register.getMenyName(i));
         }
-        String menu = scanner.nextLine();
+        String menu = register.getMenyName(scanner.nextInt());
         System.out.print("Enter Dish: ");
         String dish = scanner.nextLine();
         register.addDTM(menu, dish);
