@@ -28,13 +28,12 @@ public class TomtRegister {
 
     public int getNumOfProp(){return tomter.size();}
 
-    public Tomt getTomt(String unikID){
+    public void getTomt(String unikID){
         for(int i = 0; i<tomter.size(); i++){
             if (unikID.equals(tomter.get(i).getUnikID())){
-                return tomter.get(i);
+                System.out.println(tomter.get(i).toString());
             }
         }
-        return null;
     }
 
     public double getAvrgArea(){
