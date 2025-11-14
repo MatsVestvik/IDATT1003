@@ -16,14 +16,6 @@ public class test {
         reg.addTomt("Gloppen", 1445, 74, 188, "null", 1457.2, "Karl Ove Bråten");
         reg.addTomt("Gloppen", 1445, 69, 47, "Høiberg", 1339.4, "Elsa Indregård");
 
-        //System.out.println(reg.getTomt("1445-77/631"));
-
-        //reg.getAll();
-
-        //System.out.println(reg.getAvrgArea());
-
-        //reg.getAllGnr(77);
-
         while (running){
             System.out.println("""
                     Choose:
@@ -31,7 +23,8 @@ public class test {
                     2. print all properties
                     3. search property
                     4. avrg area of all
-                    5. quit
+                    5. search gaardnr
+                    6. quit
                     """);
             int choice = scanner.nextInt();
             
@@ -40,7 +33,8 @@ public class test {
                 case 2 -> reg.getAll();
                 case 3 -> searchPropertyMenu();
                 case 4 -> System.out.println(reg.getAvrgArea());
-                case 5 -> running = false;
+                case 5 -> searchknrMenu();
+                case 6 -> running = false;
                 default -> {}
             }
         }
@@ -74,5 +68,12 @@ public class test {
         String unikID = scanner.nextLine();
 
         reg.getTomt(unikID);
+    }
+    
+    static void searchknrMenu(){
+        scanner = new Scanner(System.in);
+        System.out.print("Enter kommunenr (eks: 77): ");
+        int knr = scanner.nextInt();
+        reg.getAllKommuneNr(knr);
     }
 }

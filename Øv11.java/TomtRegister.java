@@ -54,6 +54,14 @@ public class TomtRegister {
         System.out.println();
     }
 
+    public void getAllKommuneNr(int knr){
+        for(int i = 0; i < tomter.size(); i++){
+            if (knr == tomter.get(i).getGaardsNr()){
+                System.out.println(tomter.get(i));
+            }
+        }
+    }
+
     public void getAll(){
         for(int i = 0; i < tomter.size(); i++){
             System.out.println(tomter.get(i));
